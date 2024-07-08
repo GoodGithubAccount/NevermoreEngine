@@ -61,7 +61,7 @@ end
 function TieSignalInterface:ObserveBindableEventBrio()
 	local name = self._memberDefinition:GetMemberName()
 
-	return self._tieSignalInterface:ObserveImplParentBrio():Pipe({
+	return self:ObserveImplParentBrio():Pipe({
 		RxBrioUtils.switchMapBrio(function(implParent)
 			return RxInstanceUtils.observeLastNamedChildBrio(implParent, "BindableEvent", name)
 		end);

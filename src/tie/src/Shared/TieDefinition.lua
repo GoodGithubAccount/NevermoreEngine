@@ -313,6 +313,9 @@ function TieDefinition:HasImplementation(adornee: Instance, tieRealm)
 	-- TODO: Maybe something faster
 	for containerName, _ in pairs(self:GetValidContainerNameSet(tieRealm)) do
 		local implParent = adornee:FindFirstChild(containerName)
+		if not implParent then
+			continue
+		end
 
 		if self:IsImplementation(implParent, tieRealm) then
 			return true
